@@ -64,4 +64,4 @@ jobs:
           files: |
             target/${{ matrix.target }}/release/csvtosql-${{ matrix.artifact_prefix }}.tar.gz
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
