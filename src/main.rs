@@ -1,9 +1,9 @@
-mod sql_builder;
-mod csv_helper;
+
 
 use std::fs;
 use std::path::Path;
 use clap::Parser;
+use csvtosql_core::{csv_helper, sql_builder};
 
 
 #[derive(Parser, Debug)]
@@ -33,7 +33,7 @@ fn main() {
         Err(e) => panic!("Failed to read headers from file: {}", e)
     };
 
-    let statement = sql_builder::build_sql_statement(headers, args.table.clone(), args.database);
+    let statement = sql_builder::build_sql_statement(headers, &args.table, &args.database);
 
     // Write statement to sql file.
     let output_file = format!("./{}.sql", args.table);
