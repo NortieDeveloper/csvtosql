@@ -99,9 +99,9 @@ dependencies = [
 
 [[package]]
 name = "csvtosql-core"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b26b42f27fae0fd2b4abb78502f1ce06c6e0861459964bbb6c60bfb36daea235"
+checksum = "711e20a085b496218464f367ebe132ef641706adda82f2807cd658261752d425"
 dependencies = [
  "csv",
 ]

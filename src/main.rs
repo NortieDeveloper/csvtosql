@@ -1,6 +1,6 @@
+extern crate core;
 
-
-use std::fs;
+use std::{fs};
 use std::path::Path;
 use clap::Parser;
 use csvtosql_core::{csv_helper, sql_builder};
@@ -27,7 +27,14 @@ fn main() {
 
     //Extract the headers from the csv file.
     let file_path = Path::new(&args.file_path);
-    let headers = csv_helper::extract_headers(file_path);
+    let contents = fs::read_to_string(file_path);
+
+    let contents = match contents {
+        Ok(c) => c,
+        Err(e) => panic!("Failed to read contents of file. Error: {}", e)
+    };
+
+    let headers = csv_helper::extract_headers(contents.as_str());
     let headers = match headers {
         Ok(h) => h,
         Err(e) => panic!("Failed to read headers from file: {}", e)
